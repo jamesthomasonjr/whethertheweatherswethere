@@ -18,10 +18,21 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 
+$container['services.cities'] = function ($c) {
+    return new \Weather\Services\CitiesService();
+};
+
+$container['repositories.weather.yahoo'] = function ($c) {
+    return new \Weather\Repositories\WeatherRepository\YahooWeatherRepository();
+};
+
 $container['controllers.index'] = function ($c) {
     return new \Weather\Controllers\IndexController();
 };
 
 $container['controllers.cities'] = function ($c) {
-    return new \Weather\Controllers\CitiesController();
+    return new \Weather\Controllers\CitiesController(
+        $c['services.cities'],
+        $c['repositories.weather.yahoo']
+    );
 };

@@ -21,9 +21,17 @@ class CitiesController {
     }
 
     public function cityByName($request, $response, $args) {
-        $cityName = $this->citiesService->translateCityName($args['cityName']);
-        $weather = $this->weatherRepo->getWeatherForCity($cityName);
+        //No longer needed: just let users put spaces in the URL
+        //$cityName = $this->citiesService->translateCityName($args['cityName']);
 
-        return $weather;
+        $weather = $this->weatherRepo->getWeatherForCity($args['cityName']);
+
+        $out = [
+            'title' => $weather->getTitle(),
+            'current' => $weather->getCurrentForecast(),
+            '3-day' => $weather->getThreeDayForecast()
+        ];
+
+        return var_export($out, true);
     }
 }

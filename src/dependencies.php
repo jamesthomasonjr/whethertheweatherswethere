@@ -22,8 +22,19 @@ $container['services.cities'] = function ($c) {
     return new \Weather\Services\CitiesService();
 };
 
+$container['factories.weather'] = function ($c) {
+    return new \Weather\Factories\WeatherFactory();
+};
+
 $container['repositories.weather.yahoo'] = function ($c) {
-    return new \Weather\Repositories\WeatherRepository\YahooWeatherRepository();
+    $guzzle = new \GuzzleHttp\Client([
+        'base_uri' => 'https://query.yahooapis.com/v1/public/'
+    ]);
+
+    return new \Weather\Repositories\WeatherRepository\YahooWeatherRepository(
+        $guzzle,
+        $c['factories.weather']
+    );
 };
 
 $container['controllers.index'] = function ($c) {

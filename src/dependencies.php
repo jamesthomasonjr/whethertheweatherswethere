@@ -18,10 +18,6 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 
-$container['services.cities'] = function ($c) {
-    return new \Weather\Services\CitiesService();
-};
-
 $container['factories.weather'] = function ($c) {
     return new \Weather\Factories\WeatherFactory();
 };
@@ -43,7 +39,6 @@ $container['controllers.index'] = function ($c) {
 
 $container['controllers.cities'] = function ($c) {
     return new \Weather\Controllers\CitiesController(
-        $c['services.cities'],
         $c['repositories.weather.yahoo']
     );
 };

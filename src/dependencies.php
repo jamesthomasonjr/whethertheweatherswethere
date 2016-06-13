@@ -17,3 +17,11 @@ $container['logger'] = function ($c) {
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], Monolog\Logger::DEBUG));
     return $logger;
 };
+
+$container['controllers.index'] = function ($c) {
+    return new \Weather\Controllers\IndexController();
+};
+
+$container['controllers.cities'] = function ($c) {
+    return new \Weather\Controllers\CitiesController();
+};

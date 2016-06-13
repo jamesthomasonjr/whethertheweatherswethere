@@ -1,10 +1,10 @@
 <?php
 // Routes
 
-$app->get('/[{name}]', function ($request, $response, $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
+$app->get('/', 'controllers.index:index');
 
-    // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args);
+$app->group('/cities', function () use ($app) {
+    $app->get('/', 'controllers.cities:index');
+    $app->get('/{cityId}/', 'controllers.cities:cityById');
 });
+

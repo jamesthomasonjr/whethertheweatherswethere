@@ -30,23 +30,23 @@
         <h1>WTWWT</h1>
         <div>Whether the weather's wet there</div>
 
-        <h2><?= $title ?></h2>
+        <h2>{{ title }}</h2>
         <hr />
         <div>
             <h3>Current Conditions</h3>
-            The weather is currently <strong><?= $current['description'] ?></strong> with a temperature of <strong><?= $current['temperature'] ?>&deg;</strong>, and it feels like <strong><?= $current['windChill'] ?>&deg;</strong>.<br />
-            The current wind is <strong><?= $current['windSpeed'] ?></strong> miles per hour to the <strong><?= $current['windDirection'] ?></strong>,<br />
-            and the current humidity is <strong><?= $current['humidity'] ?>&#37;</strong>.
+            The weather is currently <strong>{{ current['description'] }}</strong> with a temperature of <strong>{{ current['temperature'] }}&deg;</strong>, and it feels like <strong>{{ current['windChill'] }}&deg;</strong>.<br />
+            The current wind is <strong>{{ current['windSpeed'] }}</strong> miles per hour to the <strong>{{ current['windDirection'] }}</strong>,<br />
+            and the current humidity is <strong>{{ current['humidity'] }}&#37;</strong>.
         </div>
         <hr />
         <div>
             <h3>3 Day Forecast</h3>
-            <?php foreach($threeDay as $forecast) {?>
+            {% for forecast in threeDay %}
                 <p>
-                    <strong><?= $forecast['day'] ?>, <?= $forecast['date'] ?></strong><br />
-                    <strong><?= $forecast['description'] ?></strong> with a high of <strong><?= $forecast['high'] ?>&deg;</strong> and a low of <strong><?= $forecast['low'] ?>&deg;</strong>
+                    <strong>{{ forecast['day'] }}, {{ forecast['date'] }}</strong><br />
+                    <strong>{{ forecast['description'] }}</strong> with a high of <strong>{{ forecast['high'] }}&deg;</strong> and a low of <strong>{{ forecast['low'] }}&deg;</strong>
                 </p>
-            <?php }?>
+            {% endfor %}
         </div>
         <hr />
     </body>

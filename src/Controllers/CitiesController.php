@@ -4,7 +4,8 @@ namespace Weather\Controllers;
 use \Psr\Http\Message\RequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Weather\Repositories\WeatherRepository\WeatherRepository;
-use \Slim\Views\PhpRenderer as Renderer;
+//use \Slim\Views\PhpRenderer as Renderer;
+use \Slim\Views\Twig as Renderer;
 
 class CitiesController
 {

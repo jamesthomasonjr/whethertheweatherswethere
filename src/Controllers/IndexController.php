@@ -3,7 +3,8 @@ namespace Weather\Controllers;
 
 use \Psr\Http\Message\RequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
-use \Slim\Views\PhpRenderer as Renderer;
+//use \Slim\Views\PhpRenderer as Renderer;
+use \Slim\Views\Twig as Renderer;
 
 class IndexController
 {

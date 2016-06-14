@@ -2,20 +2,42 @@
 
 namespace Weather\Adapters\Forecast;
 
+use \Weather\Adapters\Forecast\Forecast;
+
+/**
+ * @implements \Weather\Adapters\Forecast\Forecast
+ */
 class YahooWeatherForecast
 {
+    /**
+     * @var array Response from Yahoo Weather API
+     */
     private $data;
 
+    /**
+     * Creates a new YahooWeatherForecast
+     *
+     * @param array $yahooApiResponse Response from Yahoo Weather API
+     */
     public function __construct($yahooApiResponse)
     {
         $this->data = $yahooApiResponse;
     }
 
+    /**
+     * @inherit
+     */
     public function getTitle()
     {
         return $this->data['query']['results']['channel']['item']['title'];
     }
 
+    /**
+     * Translates an integer between 0 and 360 into one of 16  cardinal directions
+     *
+     * @param integer $windDirection Degrees clockwise from absolute north
+     * @return string String representation of cardinal direction
+     */
     private function translateWindDirection($windDirection)
     {
         $out = '';
@@ -59,6 +81,9 @@ class YahooWeatherForecast
         return $out;
     }
 
+    /**
+     * @inherit
+     */
     public function getCurrentForecast()
     {
         return [
@@ -71,6 +96,9 @@ class YahooWeatherForecast
         ];
     }
 
+    /**
+     * @inherit
+     */
     public function getThreeDayForecast()
     {
         $forecast = [];

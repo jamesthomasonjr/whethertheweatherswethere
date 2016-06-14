@@ -1,7 +1,9 @@
 <?php
 namespace Weather\Controllers;
 
-use Weather\Repositories\WeatherRepository\WeatherRepository;
+use \Psr\Http\Message\RequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
+use \Weather\Repositories\WeatherRepository\WeatherRepository;
 use \Slim\Views\PhpRenderer as Renderer;
 
 class CitiesController
@@ -17,12 +19,12 @@ class CitiesController
         $this->renderer = $renderer;
     }
 
-    public function index($request, $response, $args)
+    public function index(Request $request, Response $response, array $args)
     {
         return $this->renderer->render($response, 'cities/index.phtml');
     }
 
-    public function cityByName($request, $response, $args)
+    public function cityByName(Request $request, Response $response, array $args)
     {
         $weather = $this->weatherRepo->getWeatherForCity($args['cityName']);
 

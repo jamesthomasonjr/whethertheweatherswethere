@@ -2,8 +2,10 @@
 
 namespace Weather\Factories;
 
-class WeatherFactory {
-    public function buildYahooWeather($yahooApiResponse) {
+class WeatherFactory
+{
+    public function buildYahooWeather($yahooApiResponse)
+    {
         return new \Weather\Adapters\Forecast\YahooWeatherForecast($yahooApiResponse);
     }
 }

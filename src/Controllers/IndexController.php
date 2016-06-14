@@ -3,7 +3,8 @@ namespace Weather\Controllers;
 
 use \Slim\Views\PhpRenderer as Renderer;
 
-class IndexController {
+class IndexController
+{
     private $renderer;
 
     public function __construct(

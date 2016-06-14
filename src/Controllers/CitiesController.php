@@ -4,7 +4,8 @@ namespace Weather\Controllers;
 use Weather\Repositories\WeatherRepository\WeatherRepository;
 use \Slim\Views\PhpRenderer as Renderer;
 
-class CitiesController {
+class CitiesController
+{
     private $weatherRepo;
     private $renderer;
 

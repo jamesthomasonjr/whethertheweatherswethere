@@ -1,53 +1,23 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8"/>
-        <title>WTWWT</title>
-        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+{% extends "main.html" %}
 
-        <style>
-            body {
-                margin: 50px 0 0 0;
-                padding: 0;
-                width: 100%;
-                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                text-align: center;
-                color: #aaa;
-                font-size: 18px;
-            }
-
-            h1 {
-                color: #719e40;
-                letter-spacing: -3px;
-                font-family: 'Lato', sans-serif;
-                font-size: 100px;
-                font-weight: 200;
-                margin-bottom: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>WTWWT</h1>
-        <div>Whether the weather's wet there</div>
-
-        <h2>{{ title }}</h2>
-        <hr />
-        <div>
-            <h3>Current Conditions</h3>
-            The weather is currently <strong>{{ current['description'] }}</strong> with a temperature of <strong>{{ current['temperature'] }}&deg;</strong>, and it feels like <strong>{{ current['windChill'] }}&deg;</strong>.<br />
-            The current wind is <strong>{{ current['windSpeed'] }}</strong> miles per hour to the <strong>{{ current['windDirection'] }}</strong>,<br />
-            and the current humidity is <strong>{{ current['humidity'] }}&#37;</strong>.
-        </div>
-        <hr />
-        <div>
-            <h3>3 Day Forecast</h3>
-            {% for forecast in threeDay %}
-                <p>
-                    <strong>{{ forecast['day'] }}, {{ forecast['date'] }}</strong><br />
-                    <strong>{{ forecast['description'] }}</strong> with a high of <strong>{{ forecast['high'] }}&deg;</strong> and a low of <strong>{{ forecast['low'] }}&deg;</strong>
-                </p>
-            {% endfor %}
-        </div>
-        <hr />
-    </body>
-</html>
+{% block content %}
+    <h2>{{ title }}</h2>
+    <hr />
+    <div>
+        <h3>Current Conditions</h3>
+        The weather is currently <strong>{{ current['description'] }}</strong> with a temperature of <strong>{{ current['temperature'] }}&deg;</strong>, and it feels like <strong>{{ current['windChill'] }}&deg;</strong>.<br />
+        The current wind is <strong>{{ current['windSpeed'] }}</strong> miles per hour to the <strong>{{ current['windDirection'] }}</strong>,<br />
+        and the current humidity is <strong>{{ current['humidity'] }}&#37;</strong>.
+    </div>
+    <hr />
+    <div>
+        <h3>3 Day Forecast</h3>
+        {% for forecast in threeDay %}
+            <p>
+                <strong>{{ forecast['day'] }}, {{ forecast['date'] }}</strong><br />
+                <strong>{{ forecast['description'] }}</strong> with a high of <strong>{{ forecast['high'] }}&deg;</strong> and a low of <strong>{{ forecast['low'] }}&deg;</strong>
+            </p>
+        {% endfor %}
+    </div>
+    <hr />
+{% endblock %}

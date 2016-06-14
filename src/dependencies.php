@@ -34,11 +34,14 @@ $container['repositories.weather.yahoo'] = function ($c) {
 };
 
 $container['controllers.index'] = function ($c) {
-    return new \Weather\Controllers\IndexController();
+    return new \Weather\Controllers\IndexController(
+        $c['renderer']
+    );
 };
 
 $container['controllers.cities'] = function ($c) {
     return new \Weather\Controllers\CitiesController(
-        $c['repositories.weather.yahoo']
+        $c['repositories.weather.yahoo'],
+        $c['renderer']
     );
 };

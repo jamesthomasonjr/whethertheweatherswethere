@@ -1,11 +1,19 @@
 <?php
 namespace Weather\Controllers;
 
+use \Slim\Views\PhpRenderer as Renderer;
+
 class IndexController {
-    public function __construct() {
+    private $renderer;
+
+    public function __construct(
+        Renderer $renderer
+    ) {
+        $this->renderer = $renderer;
     }
 
-    public function index($request, $response, $args) {
-        return 'Site Index';
+    public function index($request, $response, $args)
+    {
+        return $this->renderer->render($response, 'index.phtml');
     }
 }

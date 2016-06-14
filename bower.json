@@ -1,0 +1,8 @@
+{
+    "name": "whethertheweatherswetthere",
+    "version": "0.0.1",
+    "dependencies": {
+        "jquery": "~3.0.0"
+    },
+    "private": true
+}

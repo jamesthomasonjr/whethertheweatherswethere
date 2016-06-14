@@ -2,29 +2,35 @@
 namespace Weather\Controllers;
 
 use Weather\Repositories\WeatherRepository\WeatherRepository;
+use \Slim\Views\PhpRenderer as Renderer;
 
 class CitiesController {
     private $weatherRepo;
+    private $renderer;
 
     public function __construct(
-        WeatherRepository $repo
+        WeatherRepository $repo,
+        Renderer $renderer
     ) {
         $this->weatherRepo = $repo;
+        $this->renderer = $renderer;
     }
 
-    public function index($request, $response, $args) {
-        return 'Cities Index';
+    public function index($request, $response, $args)
+    {
+        return $this->renderer->render($response, 'cities/index.phtml');
     }
 
-    public function cityByName($request, $response, $args) {
+    public function cityByName($request, $response, $args)
+    {
         $weather = $this->weatherRepo->getWeatherForCity($args['cityName']);
 
-        $out = [
+        $data = [
             'title' => $weather->getTitle(),
             'current' => $weather->getCurrentForecast(),
-            '3-day' => $weather->getThreeDayForecast()
+            'threeDay' => $weather->getThreeDayForecast()
         ];
 
-        return var_export($out, true);
+        return $this->renderer->render($response, 'cities/forecast.phtml', $data);
     }
 }

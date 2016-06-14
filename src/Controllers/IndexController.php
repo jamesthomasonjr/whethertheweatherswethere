@@ -18,6 +18,6 @@ class IndexController
 
     public function index(Request $request, Response $response, array $args)
     {
-        return $this->renderer->render($response, 'index.phtml');
+        return $this->renderer->render($response, 'index.html');
     }
 }

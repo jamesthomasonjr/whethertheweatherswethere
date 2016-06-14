@@ -22,7 +22,7 @@ class CitiesController
 
     public function index(Request $request, Response $response, array $args)
     {
-        return $this->renderer->render($response, 'cities/index.phtml');
+        return $this->renderer->render($response, 'cities/index.html');
     }
 
     public function cityByName(Request $request, Response $response, array $args)
@@ -35,6 +35,6 @@ class CitiesController
             'threeDay' => $weather->getThreeDayForecast()
         ];
 
-        return $this->renderer->render($response, 'cities/forecast.phtml', $data);
+        return $this->renderer->render($response, 'cities/forecast.html', $data);
     }
 }
